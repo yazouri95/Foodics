@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "${SYSTEM_EMAIL:}"
+    password: "${SYSTEM_EMAIL_PASSWORD:}"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls: true
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/inventory_db"
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+    drop-first: false
+    enabled: true
+
+
+merchant:
+  email: "${MERCHANT_EMAIL:}"
+  ingredient-low-stock-threshold-percentage: 0.5
+
